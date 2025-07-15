@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import Loading from "../components/Loading";
-import Tours from "../components/Tours";
+import React, { useState, useEffect } from "react";
+import Loading from "./Loading";
+import Tours from "./Tours";
 
-const url = 'https://course-api.com/react-tours-project';
+const url = "https://course-api.com/react-tours-project";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -11,43 +11,41 @@ function App() {
   const fetchTours = async () => {
     setLoading(true);
     try {
-      const response = await fetch(url);
-      const data = await response.json();
+      const res = await fetch(url);
+      const data = await res.json();
       setTours(data);
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      console.error("Failed to fetch tours:", error);
       setLoading(false);
     }
-  };
-
-  const removeTour = (id) => {
-    setTours(tours.filter((tour) => tour.id !== id));
   };
 
   useEffect(() => {
     fetchTours();
   }, []);
 
-  if (loading) {
-    return <Loading />;
-  }
+  const removeTour = (id) => {
+    setTours((prev) => prev.filter((tour) => tour.id !== id));
+  };
+
+  if (loading) return <Loading />;
 
   if (tours.length === 0) {
     return (
       <main>
-        <h2>No tours left</h2>
-        <button className="btn" onClick={fetchTours}>
-          Refresh
-        </button>
+        <div className="title">
+          <h2>No tours left</h2>
+          <button className="btn" onClick={fetchTours}>
+            Refresh
+          </button>
+        </div>
       </main>
     );
   }
 
   return (
     <main>
-      <h1>Our Tours</h1>
-      <div className="underline"></div>
       <Tours tours={tours} removeTour={removeTour} />
     </main>
   );
