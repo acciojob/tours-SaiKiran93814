@@ -1,8 +1,10 @@
+import React, { useState } from "react";
+
 function Tour({ id, image, info, price, name, removeTour }) {
   const [readMore, setReadMore] = useState(false);
 
   return (
-    <article className="single-tour" data-testid={`tour-${id}`}>
+    <article className="single-tour">
       <img src={image} alt={name} />
       <footer>
         <div className="tour-info">
@@ -26,3 +28,5 @@ function Tour({ id, image, info, price, name, removeTour }) {
     </article>
   );
 }
+
+export default Tour;
