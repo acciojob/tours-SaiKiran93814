@@ -9,6 +9,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [tours, setTours] = useState([]);
 
+
   const fetchTours = async () => {
     setLoading(true);
     try {
@@ -17,7 +18,7 @@ function App() {
       setTours(data);
       setLoading(false);
     } catch (error) {
-      console.error("Failed to fetch tours:", error);
+      console.error("Error fetching tours:", error);
       setLoading(false);
     }
   };
@@ -26,15 +27,19 @@ function App() {
     fetchTours();
   }, []);
 
+  // Remove a tour by ID
   const removeTour = (id) => {
-    setTours((prev) => prev.filter((tour) => tour.id !== id));
+    setTours((prevTours) => prevTours.filter((tour) => tour.id !== id));
   };
 
-  if (loading) return <Loading />;
+  
+  if (loading) {
+    return <Loading />;
+  }
 
   if (tours.length === 0) {
     return (
-      <main>
+      <main id="main">
         <div className="title">
           <h2>No tours left</h2>
           <button className="btn" onClick={fetchTours}>
@@ -45,8 +50,9 @@ function App() {
     );
   }
 
+  
   return (
-    <main>
+    <main id="main">
       <Tours tours={tours} removeTour={removeTour} />
     </main>
   );
