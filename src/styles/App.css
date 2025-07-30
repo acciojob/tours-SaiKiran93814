@@ -1,12 +1,59 @@
-h1 {
-    color: #27aedb;
-    text-align: center;
-    }
-    
+body {
+  font-family: Arial, sans-serif;
+  background: #f1f5f8;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
 
-button{
-    color: #27aedb;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+main {
+  padding: 2rem;
+}
+
+.underline {
+  width: 5rem;
+  height: 0.25rem;
+  background: #49a6e9;
+  margin: 0 auto 2rem;
+}
+
+.tour {
+  background: white;
+  margin: 1rem auto;
+  border-radius: 5px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.tour img {
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.tour-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.tour-price {
+  color: #49a6e9;
+  background: #ebf7ff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+}
+
+button {
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.delete-btn {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
 }
